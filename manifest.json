@@ -1,7 +1,7 @@
 {
   "name": "Polymer Day",
   "short_name": "Polymer Day",
-  "description": "Polymer Day is the first event focused on Google's Polymer Library and App's Toolbox in Spain. We we dedicate one an a half days to talk about Web Components technology.",
+  "description": "Polymer Day is the event focused on Google's Polymer Library and App's Toolbox in Spain. We we dedicate one an a half days to talk about Web Components technology.",
   "start_url": "/?homescreen=1",
   "display": "standalone",
   "theme_color": "#2c5ea5",
