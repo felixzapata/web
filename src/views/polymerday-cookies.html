@@ -47,9 +47,12 @@
   </template>
 
   <script>
-    Polymer({
-      is: 'polymerday-cookies'
-    });
+      class polymerdayCookies extends Polymer.Element {
+        static get is() {
+          return 'polymerday-cookies';
+        }
+      };
+      window.customElements.define(polymerdayCookies.is, polymerdayCookies);
   </script>
 
 </dom-module>

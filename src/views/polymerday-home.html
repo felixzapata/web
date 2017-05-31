@@ -10,104 +10,80 @@
   <template>
 
     <style include="polymerday-classes">
-      :host {
+       :host {
         display: block;
       }
+
       .date {
-       @apply(--text-subtitle);
-       margin: 24px auto 24px;
-       text-align: center;
-     }
-     .description {
-       margin: 24px 0;
-       max-width: 832px;
-       @apply(--text-normal);
-     }
-     .location {
-       display: block;
-       margin-bottom: 20px;
-       text-transform: uppercase;
-       @apply(--text-title-secondary);
-     }
-     .logo {
-       margin: 0 20px 20px;
-       padding: 0;
-     }
-     .logo img {
-       width: 100%;
-       height: auto;
-       max-width: 380px;
-       min-width: 300px;
-     }
+        @apply(--text-subtitle);
+        margin: 24px auto 24px;
+        text-align: center;
+      }
+
+      .description {
+        margin: 24px 0;
+        max-width: 832px;
+        @apply(--text-normal);
+      }
+
+      .location {
+        display: block;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        @apply(--text-title-secondary);
+      }
+
+      .logo {
+        margin: 0 20px 20px;
+        padding: 0;
+      }
+
+      .logo img {
+        width: 100%;
+        height: auto;
+        max-width: 380px;
+        min-width: 300px;
+      }
+
       polymerday-twitter-timeline {
-         text-align: left;
-         margin-top: 50px;
-         max-width: 900px;
-         margin: 0 auto;
+        text-align: left;
+        margin-top: 50px;
+        max-width: 900px;
+        margin: 0 auto;
       }
     </style>
     <div class="content center">
       <!-- <span class="date">[[localize('home.date', 'eventDate', date)]]</span> -->
       <span class="date">[[localize('home.banner')]]</span>
-      <h1 class="logo"><img src="../images/logo-polymerday-color.svg" alt="Polymer Day"></h1>
+      <h1 class="logo"><img src$="[[importPath]]../images/logo-polymerday-color.svg" alt="Polymer Day"></h1>
       <span class="location">Madrid</span>
       <p class="description">[[localize('home.intro')]]</p>
-      <polymerday-twitter-timeline
-        lang="es"
-        height="500"
-        width="900"
-        link-color="#616161"
-        chrome="noheader nofooter noborders"
-        widget-id="786489175050625024">
-      </polymerday-twitter-timeline>
     </div>
   </template>
 
   <script>
+    class polymerdayHome extends Polymer.mixinBehaviors([Polymerday.AppLocalizeBehavior], Polymer.Element) {
 
-    Polymer({
-
-      is: 'polymerday-home',
-
-      behaviors: [
-        Polymerday.AppLocalizeBehavior
-      ],
-
-      properties: {
-        // user: {
-        //   type: Object,
-        //   notify: true
-        // },
-        //
-        // accountButtonIcon: {
-        //   type: String,
-        //   value: 'account-circle',
-        //   computed: '_computeAccountButtonIcon(user)'
-        // },
-        date: {
-          type: Date,
-          value: new Date('October 21, 2016 17:00:00')
-        }
-      },
-
-      // listeners: {
-      //   'accountButton.tap': '_showAccountDialog'
-      // },
-      //
-      // _computeAccountButtonIcon: function(user) {
-      //   return (user) ? null : 'account-circle'
-      // },
-      //
-      // _showAccountDialog: function() {
-      //   this.fire('showAccountDialog');
-      // },
-
-      _dateforTimer: function(date){
-        return new Date(date).toISOString().slice(0,-1);
+      static get is() {
+        return 'polymerday-home';
       }
 
-    });
+      static get properties() {
+        return {
+          date: {
+            type: Date,
+            value: new Date('October 21, 2016 17:00:00')
+          }
+        }
+      }
 
+      _dateforTimer(date) {
+        return new Date(date).toISOString().slice(0, -1);
+      }
+
+    };
+
+    window.customElements.define(polymerdayHome.is, polymerdayHome);
   </script>
 
 </dom-module>
