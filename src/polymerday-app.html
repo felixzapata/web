@@ -258,8 +258,14 @@
       storage-bucket="{{firebaseData.storageBucket}}">
     </firebase-app>
 
-    <polymerday-data data="{{menu}}" page="menu">
-    </polymerday-data>
+    <app-location route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+    <polymerday-data data="{{menu}}" page="menu"></polymerday-data>
 
     <app-drawer-layout force-narrow>
 
@@ -279,8 +285,8 @@
           </app-toolbar>
         </app-header>
 
-        <iron-pages id="views" role="main" selected="[[page]]" attr-for-selected="name">
-          <polymerday-home name="home" user="[[user]]"></polymerday-home>
+        <iron-pages id="views" role="main" selected="home" attr-for-selected="name">
+          <polymerday-home name="home"></polymerday-home>
           <polymerday-cookies name="cookies"></polymerday-cookies>
         </iron-pages>
 
@@ -340,6 +346,7 @@
 
             page: {
               type: String,
+              value: 'home',
               reflectToAttribute: true,
               observer: '_pageChanged'
             },
@@ -356,8 +363,7 @@
       }
 
       static get observers() {
-        return
-        [
+        return [
           'goTo(routeData.page)',
           '_slashEnding(route.path)',
           '_menuChanged(menu.splices)'
@@ -383,7 +389,7 @@
         if (page) {
           var url = this.resolveUrl('views/polymerday-' + page + '.html');
           // load page import on demand.
-          this.importHref(url, null, null, true);
+          Polymer.importHref.importHref(url, null, null, true);
         }
       }
 
