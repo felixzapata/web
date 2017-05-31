@@ -7,19 +7,12 @@
 <dom-module id="polymerday-data">
   <template>
     <style>
-      :host{
+       :host {
         display: none;
       }
     </style>
-    <firebase-query
-      id="firebaseQuery"
-      path="{{_path}}"
-      data="{{data}}"
-      order-by-key="[[orderByKey]]"
-      order-by-child="[[orderBy]]"
-      equal-to="[[equalTo]]"
-      start-at="[[startAt]]"
-      end-at="[[endAt]]">
+    <firebase-query id="firebaseQuery" path="{{_path}}" data="{{data}}" order-by-key="[[orderByKey]]" order-by-child="[[orderBy]]"
+      equal-to="[[equalTo]]" start-at="[[startAt]]" end-at="[[endAt]]">
     </firebase-query>
 
     <!-- https://github.com/polymer-day/web/issues/99
@@ -31,58 +24,64 @@
     -->
   </template>
 
-<script>
+  <script>
+    class polymerdayData extends Polymer.Element {
+      static get is() {
+        return 'polymerday-data';
+      }
 
-    Polymer({
 
-      is: 'polymerday-data',
+      static get properties() {
+        return {
 
-      properties: {
-        page: {
-          type: String
-        },
+          properties: {
 
-        subpage: {
-          type: String,
-          value: ''
-        },
+            page: {
+              type: String
+            },
 
-        _path: {
-          type: String,
-          computed: '_computedPath(page, subpage)'
-        },
+            subpage: {
+              type: String,
+              value: ''
+            },
 
-        firebaseData: {
-          type: Object,
-          notify: true
-        },
+            _path: {
+              type: String,
+              computed: '_computedPath(page, subpage)'
+            },
 
-        data: {
-          type: Object,
-          notify: true
-        },
+            firebaseData: {
+              type: Object,
+              notify: true
+            },
 
-        orderBy: String,
-        orderByKey: Boolean,
-        equalTo: Object,
-        startAt: String,
-        endAt: String
-      },
+            data: {
+              type: Object,
+              notify: true
+            },
 
-      _computedPath: function(page, subpage){
+            orderBy: String,
+            orderByKey: Boolean,
+            equalTo: Object,
+            startAt: String,
+            endAt: String
+          }
+        }
+      }
+
+      _computedPath(page, subpage) {
         var path = '/' + page;
         if (subpage) {
           path += '/' + subpage;
         }
         return path;
-      },
+      }
 
-      child: function(child) {
+      child(child) {
         return this.$.firebaseQuery.child(child);
       }
 
-    });
-
+    };
   </script>
 
 </dom-module>
