@@ -53,8 +53,6 @@
       }
     </style>
     <div class="content center">
-      <!-- <span class="date">[[localize('home.date', 'eventDate', date)]]</span> -->
-      <span class="date">[[localize('home.banner')]]</span>
       <h1 class="logo"><img src$="[[importPath]]../images/logo-polymerday-color.svg" alt="Polymer Day"></h1>
       <span class="location">Madrid</span>
       <p class="description">[[localize('home.intro')]]</p>
@@ -66,19 +64,6 @@
 
       static get is() {
         return 'polymerday-home';
-      }
-
-      static get properties() {
-        return {
-          date: {
-            type: Date,
-            value: new Date('October 21, 2016 17:00:00')
-          }
-        }
-      }
-
-      _dateforTimer(date) {
-        return new Date(date).toISOString().slice(0, -1);
       }
 
     };
