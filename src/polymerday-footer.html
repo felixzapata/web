@@ -1,9 +1,9 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 
-<link rel="import" href="../commons/polymerday-localize-behavior.html">
+<link rel="import" href="polymerday-localize-behavior.html">
 
 <dom-module id="polymerday-footer">
 
@@ -24,7 +24,7 @@
       margin: 0 0 16px;
       padding: 0;
       text-align: center;
-      @apply(--font-primary-light);
+      @apply --font-primary-light ;
     }
 
     .links li {
@@ -97,24 +97,16 @@
   </style>
   <ul class="links">
     <li>
-      <a href="http://polymerday.eventbrite.es" target="_blank" class="eventbrite link-icon">
-        <span class="link-icon__label eventbrite">[[localize('footer.registrationAt')]]</span> <iron-icon src$="[[importPath]]../images/logo-eventbrite.svg" class="icon-eventbrite" aria-label="Eventbrite" title="Eventbrite"></iron-icon>
-      </a>
-    </li>
-    <li>
       <a href="https://twitter.com/PolymerDay" target="_blank" class="twitter link-icon">
         <span class="link-icon__label">@PolymerDay</span> <iron-icon icon="twitter"></iron-icon>
       </a>
     </li>
-    <!-- <li class="cookies">
-      <a href="/cookies">[[localize('footer.cookiesLinkText')]]</a>
-    </li> -->
   </div>
 
   </template>
 
   <script>
-    
+
     class polymerdayFooter extends Polymer.mixinBehaviors([Polymerday.AppLocalizeBehavior], Polymer.Element) {
       static get is() {
         return 'polymerday-footer';

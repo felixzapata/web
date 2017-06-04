@@ -1,11 +1,18 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
   <title>Polymer Day Madrid | 2017</title>
   <meta name="description" content="Polymer Day Madrid, el evento en España dedicado a los Web Components y Polymer. ¿Te lo vas a perder?">
+
+  <!--
+    If deploying to a non-root path, replace href="/" with the full path to the project root.
+    For example: href="/polymer-starter-kit/relative-path-example/"
+  -->
+  <base href="/">
 
   <link rel="icon" href="/images/favicon.ico">
 
@@ -51,62 +58,30 @@
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400|Roboto+Condensed" rel="stylesheet" type="text/css">
   <script>
-    // setup Polymer options
-    window.Polymer = {
-      lazyRegister: true,
-      dom: 'shadow'
-    };
-
-    var lang = navigator.language || navigator.userLanguage || document.documentElement.lang;
-    if (['en','es'].indexOf(lang.substring(0,2)) === -1) {
+    let lang = navigator.language || navigator.userLanguage || document.documentElement.lang;
+    if (['en', 'es'].indexOf(lang.substring(0, 2)) === -1) {
       lang = 'en';
     }
     document.documentElement.lang = lang;
 
-    var onload = function() {
-      // For native Imports, manually fire WebComponentsReady so user code
-      // can use the same code path for native and polyfill'd imports.
-      if (!window.HTMLImports) {
-        document.dispatchEvent(
-          new CustomEvent('WebComponentsReady', {bubbles: true})
-        );
-      }
-    };
-    var webComponentsSupported = (
-      'registerElement' in document
-      && 'import' in document.createElement('link')
-      && 'content' in document.createElement('template')
-    );
-    if (!webComponentsSupported) {
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = '/bower_components/webcomponentsjs/webcomponents-lite.js';
-      script.onload = onload;
-      document.head.appendChild(script);
-    } else {
-      onload();
-    }
-    // Load pre-caching Service Worker
+    // Register the base URL
+    const baseUrl = document.querySelector('base').href;
+    // Load and register pre-caching Service Worker
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/service-worker.js');
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register(baseUrl + 'service-worker.js');
       });
     }
 
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-84819200-1', 'auto');
-    ga('send', 'pageview');
-
   </script>
 
+  <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+  <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <!-- Load your application shell -->
   <link rel="import" href="/src/polymerday-app.html">
 
   <style>
-
     html {
       font-size: 16px;
     }
@@ -118,14 +93,15 @@
   </style>
 
 </head>
+
 <body>
 
-  <polymerday-app unresolved firebase-data='{
-    "authDomain": "polymerday-55a45.firebaseapp.com",
-    "databaseUrl": "https://polymerday-55a45.firebaseio.com/",
-    "apiKey": "AIzaSyBFnBHD71cVoldgU_GINuLx0382dpqF1ZU",
-    "storageBucket": "polymerday-55a45.appspot.com"
-  }'></polymerday-app>
+  <polymerday-app></polymerday-app>
+
+  <noscript>
+    Please enable JavaScript to view this website.
+  </noscript>
 
 </body>
+
 </html>

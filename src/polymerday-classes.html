@@ -1,13 +1,13 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <dom-module id="polymerday-classes">
   <template>
     <style>
       /* heading styles */
-      .page-title { @apply(--page-title); }
-      .page-subtitle { @apply(--page-subtitle); }
-      .item-title { @apply(--item-title); }
-      .item-subtitle { @apply(--item-subtitle); }
+      .page-title { @apply --page-title ; }
+      .page-subtitle { @apply --page-subtitle ; }
+      .item-title { @apply --item-title ; }
+      .item-subtitle { @apply --item-subtitle ; }
       .item-subtitle > a {
         color: #4687C7;
         text-decoration: none;
@@ -15,7 +15,7 @@
 
       /* button styles */
       .btn--primary {
-        @apply(--button-shadow);
+        @apply --button-shadow ;
         background: var(--color-blue-primary);
         color: #fff;
         padding: 15px 32px;
@@ -24,7 +24,7 @@
 
       /* text styles */
       .text--default {
-        @apply(--text-normal);
+        @apply --text-normal;
       }
 
       /* cards */
@@ -79,8 +79,8 @@
       }
 
       .content {
-        @apply(--layout-vertical);
-        @apply(--layout-center-center);
+        @apply --layout-vertical;
+        @apply --layout-center-center;
         position: relative;
         padding: 0 24px;
         margin: 24px 0 0;
@@ -102,8 +102,8 @@
       /* from 720px */
       @media (min-width: 45em) {
         /* heading styles */
-        .page-title { @apply(--page-title-desktop); }
-        .page-subtitle { @apply(--page-subtitle-desktop); }
+        .page-title { @apply --page-title-desktop; }
+        .page-subtitle { @apply --page-subtitle-desktop; }
 
         /* card */
         .pd-card__title { font-size: 24px; }

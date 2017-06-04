@@ -3,12 +3,6 @@
   "shell": "src/polymerday-app.html",
   "fragments": [
     "src/views/polymerday-home.html",
-    "src/views/polymerday-schedule.html",
-    "src/views/polymerday-speakers.html",
-    "src/views/polymerday-sponsors.html",
-    "src/views/polymerday-sponsors-all.html",
-    "src/views/polymerday-sponsors-microsite.html",
-    "src/views/polymerday-venue.html",
     "src/views/polymerday-cookies.html"
   ],
   "sourceGlobs": [
@@ -18,6 +12,23 @@
   ],
   "includeDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "lint": {
+    "rules": ["polymer-2"]
+  },
+  "builds": [
+    {
+      "preset": "es5-bundled",
+      "basePath": true
+    },
+    {
+      "preset": "es6-bundled",
+      "basePath": true
+    },
+    {
+      "preset": "es6-unbundled",
+      "basePath": true
+    }
   ]
 }
