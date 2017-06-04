@@ -14,6 +14,10 @@
         display: block;
       }
 
+      .content {
+        margin-top: 5em;
+      }
+
       .date {
         @apply --text-subtitle;
         margin: 24px auto 24px;
@@ -45,17 +49,62 @@
         min-width: 300px;
       }
 
-      polymerday-twitter-timeline {
-        text-align: left;
-        margin-top: 50px;
-        max-width: 900px;
-        margin: 0 auto;
+      ul {
+        display: flex;
+        /*flex-direction: row;
+        flex-wrap: wrap;*/
+        flex-flow: row wrap;
+        align-content: center;
+        margin: 1em 0 0;
+        padding: 0;
+        list-style: none;
       }
+
+      li {
+        width: 33%;
+        margin-bottom: 2em;
+      }
+
+      ul img {
+        height: auto;
+        max-width: 100%;
+      }
+
+  /*    ul div {
+        position: relative;
+        margin-bottom: 30px;
+        margin-left: 15px;
+        margin-right: 15px;
+      } */
+
     </style>
     <div class="content center">
       <h1 class="logo"><img src$="[[importPath]]../images/logo-polymerday-color.svg" alt="Polymer Day"></h1>
       <span class="location">Madrid</span>
       <div class="description" inner-h-t-m-l="[[localize('home.intro')]]"></div>
+
+      <ul>
+        <li>
+          <div><a href="http://www.meetup.com/es-ES/Madrid-Polymer-Group/"><img src$="[[importPath]]../images/logos/organizer-4.png" alt="Madrid Polymer Group" width="231" height="80"></a></div>
+        </li>
+        <li>
+          <div><a href="http://www.meetup.com/es-ES/Node-js-Madrid/"><img src$="[[importPath]]../images/logos/organizer-2.png" alt="NodeJS Madrid" width="268" height="85"></a></div>
+        </li>
+        <li>
+          <div><a href="http://www.meetup.com/es-ES/madridjs/"><img src$="[[importPath]]../images/logos/organizer-3.png" alt="Madrid JS" width="268" height="84"></a></div>
+        </li>
+
+        <li>
+          <div><a href="http://www.meetup.com/es-ES/HTML5-Spain/"><img src$="[[importPath]]../images/logos/meetup-html5-spain.jpeg" alt="HTML5 Spain" width="180" height="180"></a></div>
+        </li>
+
+        <li>
+          <div><a href="http://www.meetup.com/es-ES/Front-end-Developers-Madrid/"><img src$="[[importPath]]../images/logos/meetup-frontend-developers.jpeg" alt="Front-End Developers Madrid" width="180" height="180"></a></div>
+        </li>
+
+      </ul>
+
+
     </div>
   </template>
 
